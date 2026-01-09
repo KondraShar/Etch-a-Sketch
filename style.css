@@ -76,5 +76,11 @@ button:active {
     height: 600px;
     width: 600px;
     background-color: white;
-    
+    display: flex;
+}
+
+.game-grid {
+    background-color: black;
+    width: 100%;
+    margin: 12px;
 }
