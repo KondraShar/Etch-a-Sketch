@@ -13,6 +13,7 @@ function generateGrid(gridSize) {
 
     for(let i = 0; i < gridTotalTiles; i++) {
         const gridTile = document.createElement("div");
+        gridTile.classList = "tile";
         gridTile.style.width = `${tileWidth}px`;
         gridTile.style.height = `${tileWidth}px`;
         gridTile.style.backgroundColor = "black";
@@ -25,3 +26,10 @@ function generateGrid(gridSize) {
 };
 
 generateGrid(gridMatrix);
+
+gameGrid.addEventListener('mousemove', (event) => {
+   if (!event.target.classList.contains("tile")) {
+        return;
+    }
+    event.target.style.backgroundColor = "white";
+});
