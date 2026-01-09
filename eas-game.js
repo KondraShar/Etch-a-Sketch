@@ -1,5 +1,5 @@
 const gameGrid = document.querySelector(".game-grid");
-
+const controlPanel = document.querySelector(".control-panel");
 const gridMatrix = 16;
 
 function generateGrid(gridSize) {
@@ -32,4 +32,25 @@ gameGrid.addEventListener('mousemove', (event) => {
         return;
     }
     event.target.style.backgroundColor = "black";
+});
+
+controlPanel.addEventListener('click', (event) => {
+    if ( !event.target.classList.contains("btn") ) {
+        return;
+    }
+
+    if ( event.target.classList.contains("grid-size-btn") ) {
+        let choosenGridSize = prompt("---Grid Size---\n\n from 1 to 100\n\nEnter:");
+
+        if (choosenGridSize > 100 || choosenGridSize < 1) {
+            alert("---New Message---\n\nMy dear friend,\n\nplease read the instructions carefully...\nYou may enter numbers from 1 to 100 only!\nEasy, right?:)\n\nSincerly\nMr. Annoying Message");
+        } else {
+            while (gameGrid.hasChildNodes()) {
+                gameGrid.removeChild(gameGrid.firstChild);
+            }
+            generateGrid(choosenGridSize);
+        }
+    }
+
+    
 });
