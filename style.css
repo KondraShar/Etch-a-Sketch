@@ -5,6 +5,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: monospace;
 }
 
 .playground {
@@ -19,6 +20,54 @@ body {
     height: 100px;
     width: 600px;
     background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+}
+
+.tools {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.colors {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+button {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 7px;
+    font-family: monospace;
+}
+
+button:hover {
+  background-color: rgb(154,152,153);
+}
+
+button:active {
+  box-shadow:
+    inset -2px -2px 3px rgb(255 255 255 / 0.6),
+    inset 2px 2px 3px rgb(80 74 15 / 0.6);
+}
+
+.grid-size-btn {
+    height: 30px;
+    width: 150px;
+}
+
+.tools > button {
+    height: 20px;
+    width: 80px;
+}
+
+.colors > button {
+    height: 20px;
+    width: 130px;
 }
 
 .game {
