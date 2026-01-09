@@ -1,13 +1,13 @@
 const gameGrid = document.querySelector(".game-grid");
 
-const gridMatrix = 12;
+const gridMatrix = 16;
 
 function generateGrid(gridSize) {
 
     // grid max length = 568px;
     // padding & gap = 4px;
-    const gap = 4;
-    const maxWidth = 568;
+    const gap = 1;
+    const maxWidth = 518;
     const tileWidth = ( (maxWidth - (gridSize - 1) * gap) / gridSize );
     const gridTotalTiles = gridSize * gridSize;
 
