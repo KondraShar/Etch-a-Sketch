@@ -80,7 +80,11 @@ button:active {
 }
 
 .game-grid {
-    background-color: black;
-    width: 100%;
+    background-color: bisque;
+    width: 100;
     margin: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 4px;
 }
