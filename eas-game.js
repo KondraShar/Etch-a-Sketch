@@ -16,7 +16,7 @@ function generateGrid(gridSize) {
         gridTile.classList = "tile";
         gridTile.style.width = `${tileWidth}px`;
         gridTile.style.height = `${tileWidth}px`;
-        gridTile.style.backgroundColor = "black";
+        gridTile.style.backgroundColor = "white";
         gridTile.style.borderRadius = "3px";
         //gridTile.setAttribute('style', `background-color: white; width: ${tileWidth}px; height:${tileWidth}px; border: 2px solid black; border-radius: 4px;`);
         gameGrid.appendChild(gridTile);
@@ -31,5 +31,5 @@ gameGrid.addEventListener('mousemove', (event) => {
    if (!event.target.classList.contains("tile")) {
         return;
     }
-    event.target.style.backgroundColor = "white";
+    event.target.style.backgroundColor = "black";
 });
