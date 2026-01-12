@@ -7,6 +7,9 @@ const pencilButton = document.querySelector(".pencil-btn");
 const chooseColorButton = document.querySelector(".choose-color-btn");
 const randomColorButton = document.querySelector(".random-color-btn");
 
+const dropDownMenu = document.querySelector(".dropdown-menu");
+const colorIndicator = document.getElementById("color-indicator");
+
 let penModeActive = true;
 let pencilModeActive = false;
 let chooseColorActive = true;
@@ -94,15 +97,30 @@ controlPanel.addEventListener('click', (event) => {
         chooseColorButton.classList.add("buttonPressed");
         randomColorButton.classList.remove("buttonPressed");
 
+        if ( dropDownMenu.style.visibility == "visible" ) {
+            dropDownMenu.style.visibility = "hidden";
+        } else {
+            dropDownMenu.style.visibility = "visible";
+        }
+
         chooseColorActive = true;
         randomColorActive = false;
     }
+
+    if ( event.target.classList.contains("colorSel") ) {
+        colorChoice = event.target.textContent;
+        dropDownMenu.style.visibility = "hidden";
+        // indicate which color is active
+        colorIndicator.style.background = colorChoice;
+    }
+
     if ( event.target.classList.contains("random-color-btn")) {
         randomColorButton.classList.add("buttonPressed");
         chooseColorButton.classList.remove("buttonPressed");
 
         randomColorActive = true;
         chooseColorActive = false;
+        colorIndicator.style.background = "linear-gradient(45deg, #ff0000, #ff9900, #33ff00, #00ffff, #3366ff, #cc00ff, #ff0000)";
     }
 
     // ##############   CHANGE GRID   ##################
