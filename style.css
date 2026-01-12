@@ -23,7 +23,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 48px;
+    gap: 35px;
 }
 
 .tools {
@@ -98,6 +98,14 @@ button:active {
     width: 130px;
 }
 
+#color-indicator {
+    background-color: black;
+    height: 20px;
+    width: 20px;
+    border: 2px solid black;
+    border-radius: 12px;
+}
+
 .game {
     border: 3px solid black;
     border-radius: 20px;
@@ -114,4 +122,31 @@ button:active {
     flex-wrap: wrap;
     gap: 1px;
     padding: 4px;
+}
+
+
+.dropdown-menu {
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 162px;
+    min-width: 140px;
+    background: white;
+    border: 2px solid black;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 10;
+}
+
+.dropdown-menu > button {
+    margin: 2px;
+    padding: 8px 12px;
+    color: #333;
+    border: 2px solid white;
+    border-radius: 4px;
+}
+
+.dropdown-menu > colorSel:hover {
+    background: rgb(154,152,153);
 }
