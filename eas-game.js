@@ -2,8 +2,12 @@ const gameGrid = document.querySelector(".game-grid");
 const controlPanel = document.querySelector(".control-panel");
 const gridMatrix = 16;
 
-function generateGrid(gridSize) {
+let penModeActive = true;
+let pencilModeActive = false;
+let choosenColorActive = false;
+let randomColorActive = false;
 
+function generateGrid(gridSize) {
     // grid max length = 568px;
     // padding & gap = 4px;
     const gap = 1;
@@ -21,8 +25,6 @@ function generateGrid(gridSize) {
         //gridTile.setAttribute('style', `background-color: white; width: ${tileWidth}px; height:${tileWidth}px; border: 2px solid black; border-radius: 4px;`);
         gameGrid.appendChild(gridTile);
     };
-
-
 };
 
 generateGrid(gridMatrix);
