@@ -9,11 +9,21 @@ const randomColorButton = document.querySelector(".random-color-btn");
 
 let penModeActive = true;
 let pencilModeActive = false;
-let chooseColorActive = false;
+let chooseColorActive = true;
 let randomColorActive = false;
+
+let colorChoice = "black";
+let randomChoice = generateRandomColor();
 
 penButton.classList.add("buttonPressed");
 chooseColorButton.classList.add("buttonPressed");
+
+function generateRandomColor() {
+    const red = Math.floor( Math.random() * 256 );
+    const green = Math.floor( Math.random() * 256 );
+    const blue = Math.floor( Math.random() * 256 );
+    return `rgb(${red},${green},${blue})`;
+}
 
 function generateGrid(gridSize) {
     // grid max length = 568px;
@@ -41,7 +51,21 @@ gameGrid.addEventListener('mousemove', (event) => {
    if (!event.target.classList.contains("tile")) {
         return;
     }
-    event.target.style.backgroundColor = "black";
+
+    if ( penModeActive == true ) {
+        if ( chooseColorActive == true) {
+            event.target.style.backgroundColor = colorChoice;
+        }
+
+        if ( randomColorActive == true ) {
+            event.target.style.backgroundColor = generateRandomColor();
+        }
+        
+    }
+
+    if ( pencilModeActive == true ) {
+        event.target.style.backgroundColor = "yellow";
+    }
 });
 
 controlPanel.addEventListener('click', (event) => {
@@ -53,20 +77,32 @@ controlPanel.addEventListener('click', (event) => {
     if ( event.target.classList.contains("pen-btn")) {
         penButton.classList.add("buttonPressed");
         pencilButton.classList.remove("buttonPressed");
+
+        penModeActive = true;
+        pencilModeActive = false;
     }
     if ( event.target.classList.contains("pencil-btn")) {
         pencilButton.classList.add("buttonPressed");
         penButton.classList.remove("buttonPressed");
+
+        pencilModeActive = true;
+        penModeActive = false;
     }
 
     // #################   COLORS   ####################
     if ( event.target.classList.contains("choose-color-btn")) {
         chooseColorButton.classList.add("buttonPressed");
         randomColorButton.classList.remove("buttonPressed");
+
+        chooseColorActive = true;
+        randomColorActive = false;
     }
     if ( event.target.classList.contains("random-color-btn")) {
         randomColorButton.classList.add("buttonPressed");
         chooseColorButton.classList.remove("buttonPressed");
+
+        randomColorActive = true;
+        chooseColorActive = false;
     }
 
     // ##############   CHANGE GRID   ##################
