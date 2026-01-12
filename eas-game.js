@@ -2,10 +2,18 @@ const gameGrid = document.querySelector(".game-grid");
 const controlPanel = document.querySelector(".control-panel");
 const gridMatrix = 16;
 
+const penButton = document.querySelector(".pen-btn");
+const pencilButton = document.querySelector(".pencil-btn");
+const chooseColorButton = document.querySelector(".choose-color-btn");
+const randomColorButton = document.querySelector(".random-color-btn");
+
 let penModeActive = true;
 let pencilModeActive = false;
-let choosenColorActive = false;
+let chooseColorActive = false;
 let randomColorActive = false;
+
+penButton.classList.add("buttonPressed");
+chooseColorButton.classList.add("buttonPressed");
 
 function generateGrid(gridSize) {
     // grid max length = 568px;
@@ -41,6 +49,27 @@ controlPanel.addEventListener('click', (event) => {
         return;
     }
 
+    // ##################   TOOLS   ####################
+    if ( event.target.classList.contains("pen-btn")) {
+        penButton.classList.add("buttonPressed");
+        pencilButton.classList.remove("buttonPressed");
+    }
+    if ( event.target.classList.contains("pencil-btn")) {
+        pencilButton.classList.add("buttonPressed");
+        penButton.classList.remove("buttonPressed");
+    }
+
+    // #################   COLORS   ####################
+    if ( event.target.classList.contains("choose-color-btn")) {
+        chooseColorButton.classList.add("buttonPressed");
+        randomColorButton.classList.remove("buttonPressed");
+    }
+    if ( event.target.classList.contains("random-color-btn")) {
+        randomColorButton.classList.add("buttonPressed");
+        chooseColorButton.classList.remove("buttonPressed");
+    }
+
+    // ##############   CHANGE GRID   ##################
     if ( event.target.classList.contains("grid-size-btn") ) {
         let choosenGridSize = prompt("---Grid Size---\n\n from 1 to 100\n\nEnter:");
 
