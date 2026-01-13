@@ -21,7 +21,19 @@ function generateRandomColor() {
     const blue = Math.floor( Math.random() * 256 );
     return `rgb(${red},${green},${blue})`;
 }
-
+/*
+function fadeColor(el, delta = -0.1) {     // negative = fade out, positive = fade in
+    const c = getComputedStyle(el).backgroundColor;
+    const nums = c.match(/[\d.]+/g)?.map(Number) ?? [0,0,0,1];
+    
+    let [r, g, b, a = 1] = nums;
+    
+    a = Math.max(0, Math.min(1, a + delta));
+    el.style.backgroundColor = (a > 0.999 || a < 0.001)
+        ? `rgb(${r}, ${g}, ${b})`
+        : `rgba(${r}, ${g}, ${b}, ${Number(a.toFixed(3))})`;
+}
+*/
 function generateGrid(gridSize) {
     // grid max length = 568px;
     // padding & gap = 4px;
@@ -35,9 +47,8 @@ function generateGrid(gridSize) {
         gridTile.classList = "tile";
         gridTile.style.width = `${tileWidth}px`;
         gridTile.style.height = `${tileWidth}px`;
-        gridTile.style.backgroundColor = "white";
+        gridTile.style.backgroundColor = "rgba(0, 0, 0, 0.0)";
         gridTile.style.borderRadius = "3px";
-        //gridTile.setAttribute('style', `background-color: white; width: ${tileWidth}px; height:${tileWidth}px; border: 2px solid black; border-radius: 4px;`);
         gameGrid.appendChild(gridTile);
     };
 };
@@ -55,10 +66,17 @@ gameGrid.addEventListener('mousemove', (event) => {
             event.target.style.backgroundColor = generateRandomColor();
         }
     }
-    if ( pencilModeActive == true ) {
-        event.target.style.backgroundColor = "yellow";
+    /*if ( pencilModeActive == true ) {
+        if ( chooseColorActive == true) {
+            
+            fadeColor(event.target);
+            
+        }
 
-    }
+        if ( randomColorActive == true ) {
+            event.target.style.backgroundColor = generateRandomColor();
+        }
+    }*/
 });
 
 controlPanel.addEventListener('click', (event) => {
@@ -72,12 +90,12 @@ controlPanel.addEventListener('click', (event) => {
         penModeActive = true;
         pencilModeActive = false;
     }
-    if ( event.target.classList.contains("pencil-btn")) {
+    /*if ( event.target.classList.contains("pencil-btn")) {
         pencilButton.classList.add("buttonPressed");
         penButton.classList.remove("buttonPressed");
         pencilModeActive = true;
         penModeActive = false;
-    }
+    }*/
     // #################   COLORS   ####################
     if ( event.target.classList.contains("choose-color-btn")) {
         if ( dropDownMenu.style.visibility == "visible" ) {
@@ -91,7 +109,6 @@ controlPanel.addEventListener('click', (event) => {
     if ( event.target.classList.contains("colorSel") ) {
         colorChoice = event.target.textContent;
         dropDownMenu.style.visibility = "hidden";
-        // indicate which color is active
         colorIndicator.style.background = colorChoice;
     }
     if ( event.target.classList.contains("random-color-btn")) {
@@ -101,9 +118,11 @@ controlPanel.addEventListener('click', (event) => {
     }
     // ##############   CHANGE GRID   ##################
     if ( event.target.classList.contains("grid-size-btn") ) {
+        
+
         let choosenGridSize = prompt("---Grid Size---\n\n from 1 to 100\n\nEnter:");
 
-        if (choosenGridSize > 100 || choosenGridSize < 1) {
+        if ( choosenGridSize && (choosenGridSize > 100 || choosenGridSize < 1) ) {
             alert("---New Message---\n\nMy dear friend,\n\nplease read the instructions carefully...\nYou may enter numbers from 1 to 100 only!\nEasy, right?:)\n\nSincerly\nMr. Annoying Message");
         } else {
             while (gameGrid.hasChildNodes()) {
