@@ -12,6 +12,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-bottom: 40px;
 }
 
 .control-panel {
@@ -117,13 +118,16 @@ button:active {
     padding: 4px;
 }
 
+.choose-color-btn {
+    position: relative;
+}
 
 .dropdown-menu {
     visibility: hidden;
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 162px;
+    margin-top: 25px;
     min-width: 140px;
     background: white;
     border: 2px solid black;
