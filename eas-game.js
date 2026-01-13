@@ -2,7 +2,7 @@ const gameGrid = document.querySelector(".game-grid");
 const controlPanel = document.querySelector(".control-panel");
 const gridMatrix = 16;
 const penButton = document.querySelector(".pen-btn");
-const pencilButton = document.querySelector(".pencil-btn");
+//const pencilButton = document.querySelector(".pencil-btn");
 const chooseColorButton = document.querySelector(".choose-color-btn");
 const randomColorButton = document.querySelector(".random-color-btn");
 const dropDownMenu = document.querySelector(".dropdown-menu");
@@ -86,7 +86,7 @@ controlPanel.addEventListener('click', (event) => {
     // ##################   TOOLS   ####################
     if ( event.target.classList.contains("pen-btn")) {
         penButton.classList.add("buttonPressed");
-        pencilButton.classList.remove("buttonPressed");
+        //pencilButton.classList.remove("buttonPressed");
         penModeActive = true;
         pencilModeActive = false;
     }
